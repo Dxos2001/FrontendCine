@@ -1,0 +1,334 @@
+/* cartelera.component.css */
+
+/* Filtros */
+.filter-btn {
+  @apply px-4 py-2 rounded-full transition-all duration-300 bg-gray-700 text-gray-300 hover:bg-gray-600;
+}
+
+.filter-btn.active {
+  @apply bg-purple-600 text-white shadow-lg;
+}
+
+/* Loading Spinner */
+.loading-spinner {
+  @apply w-8 h-8 border-4 border-purple-600 border-t-transparent rounded-full animate-spin;
+}
+
+/* Grid de películas */
+.movie-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8;
+}
+
+/* Card de película */
+.movie-card {
+  @apply bg-gray-800 rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300;
+}
+
+/* Contenedor del poster */
+.movie-poster-container {
+  @apply relative;
+}
+
+.movie-poster {
+  @apply w-full h-96 object-cover;
+}
+
+/* Overlay del poster */
+.movie-overlay {
+  @apply absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center;
+}
+
+.trailer-btn {
+  @apply bg-red-600 hover:bg-red-700 px-6 py-3 rounded-full font-semibold transition-colors duration-300;
+}
+
+/* Badges */
+.rating-badge {
+  @apply absolute top-4 right-4 bg-yellow-500 text-black px-2 py-1 rounded-full text-sm font-bold;
+}
+
+.classification-badge {
+  @apply absolute top-4 left-4 bg-blue-600 px-2 py-1 rounded text-xs font-semibold;
+}
+
+/* Información de la película */
+.movie-info {
+  @apply p-6;
+}
+
+.movie-title {
+  @apply text-xl font-bold mb-2 text-white;
+}
+
+/* Meta información */
+.movie-meta {
+  @apply flex items-center gap-4 text-sm text-gray-400 mb-3;
+}
+
+.genre-badge {
+  @apply bg-purple-700 px-2 py-1 rounded text-xs;
+}
+
+.duration {
+  @apply text-gray-400;
+}
+
+/* Sinopsis */
+.movie-synopsis {
+  @apply text-gray-300 text-sm mb-4 line-clamp-3;
+}
+
+/* Detalles de la película */
+.movie-detail {
+  @apply mb-4;
+}
+
+.detail-label {
+  @apply text-sm text-gray-400 mb-1;
+}
+
+.detail-value {
+  @apply text-white font-medium;
+}
+
+/* Lista de reparto */
+.cast-list {
+  @apply flex flex-wrap gap-1 mt-2;
+}
+
+.cast-item {
+  @apply bg-gray-700 px-2 py-1 rounded text-xs;
+}
+
+/* Horarios */
+.schedule-grid {
+  @apply grid grid-cols-3 gap-2 mt-2;
+}
+
+.schedule-btn {
+  @apply bg-gray-700 hover:bg-purple-600 px-3 py-2 rounded text-sm transition-colors duration-300;
+}
+
+/* Footer de la card */
+.movie-footer {
+  @apply flex items-center justify-between pt-4 border-t border-gray-700;
+}
+
+.price-section {
+  @apply flex flex-col;
+}
+
+.price {
+  @apply text-2xl font-bold text-green-400;
+}
+
+.price-label {
+  @apply text-gray-400 text-xs;
+}
+
+.reserve-btn {
+  @apply bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 px-6 py-2 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105;
+}
+
+/* Estado vacío */
+.empty-state {
+  @apply text-center py-12;
+}
+
+.empty-icon {
+  @apply text-6xl mb-4;
+}
+
+.empty-title {
+  @apply text-2xl font-bold mb-2;
+}
+
+.empty-message {
+  @apply text-gray-400;
+}
+
+/* Footer */
+.footer {
+  @apply bg-gray-950 py-8 mt-12;
+}
+
+.footer-title {
+  @apply text-xl font-bold mb-4;
+}
+
+.footer-links {
+  @apply flex justify-center gap-8 mb-4 text-sm;
+}
+
+.footer-link {
+  @apply hover:text-purple-400 transition-colors;
+}
+
+.footer-copyright {
+  @apply text-gray-500 text-sm;
+}
+
+/* Utilidades adicionales */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Animaciones personalizadas */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.movie-card {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .movie-grid {
+    @apply grid-cols-1;
+  }
+  
+  .schedule-grid {
+    @apply grid-cols-2;
+  }
+  
+  .footer-links {
+    @apply flex-col gap-4;
+  }
+}
+
+@media (max-width: 480px) {
+  .movie-footer {
+    @apply flex-col gap-4 items-start;
+  }
+  
+  .reserve-btn {
+    @apply w-full text-center;
+  }
+}
+
+/* Filter Groups */
+.filter-group {
+  @apply space-y-2;
+}
+
+.filter-label {
+  @apply flex items-center gap-2 text-sm font-medium text-slate-300 mb-2;
+}
+
+/* Input Styles */
+.input-container {
+  @apply relative;
+}
+
+.filter-input {
+  @apply w-full pl-12 pr-4 py-3 bg-slate-800/60 border border-slate-600/50 rounded-xl text-white placeholder-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none transition-all duration-200 backdrop-blur-sm;
+}
+
+.filter-input:focus {
+  @apply bg-slate-800/80 shadow-lg;
+}
+
+.filter-input:hover {
+  @apply border-slate-500/70;
+}
+
+.input-icon {
+  @apply absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400;
+}
+
+/* Select Styles */
+.select-container {
+  @apply relative;
+}
+
+.filter-select {
+  @apply w-full pl-12 pr-10 py-3 bg-slate-800/60 border border-slate-600/50 rounded-xl text-white focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none transition-all duration-200 backdrop-blur-sm appearance-none cursor-pointer;
+}
+
+.filter-select:focus {
+  @apply bg-slate-800/80 shadow-lg;
+}
+
+.filter-select:hover {
+  @apply border-slate-500/70;
+}
+
+.filter-select option {
+  @apply bg-slate-800 text-white;
+}
+
+.select-icon {
+  @apply absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-400 pointer-events-none;
+}
+
+/* Action Buttons */
+.action-button {
+  @apply flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-200 transform hover:scale-105;
+}
+
+.action-button.primary {
+  @apply bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white shadow-lg hover:shadow-xl;
+}
+
+.action-button.secondary {
+  @apply bg-slate-700 hover:bg-slate-600 text-slate-200 border border-slate-600;
+}
+
+.action-button:active {
+  @apply transform scale-95;
+}
+
+/* Results Counter */
+.results-counter {
+  @apply flex items-center;
+}
+
+.counter-text {
+  @apply text-sm text-slate-400 bg-slate-800/50 px-3 py-1 rounded-full border border-slate-700/50;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .filter-group {
+    @apply space-y-3;
+  }
+  
+  .action-button {
+    @apply w-full justify-center;
+  }
+  
+  .results-counter {
+    @apply w-full justify-center mt-2;
+  }
+}
+
+/* Focus and Hover Effects */
+.filter-input:focus + .input-icon,
+.filter-select:focus ~ .select-icon {
+  @apply text-blue-400;
+}
+
+.filter-group:hover .filter-label {
+  @apply text-slate-200;
+}
+
+/* Animation for smooth transitions */
+.filter-input,
+.filter-select {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.action-button {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}

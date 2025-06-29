@@ -1,0 +1,184 @@
+<div class="movie-detail-container" *ngIf="pelicula">
+  <!-- Header con poster y información principal -->
+  <div class="movie-header">
+    <div class="poster-section">
+      <img 
+        [src]="pelicula.img" 
+        [alt]="pelicula.titulo"
+        class="movie-poster-large"
+        loading="lazy"
+      >
+    </div>
+    
+    <div class="movie-info-main">
+      <div class="breadcrumb">
+        <button (click)="goBack()" class="back-btn">
+          ← Volver a cartelera
+        </button>
+      </div>
+      
+      <h1 class="movie-title-main">{{ pelicula.titulo }}</h1>
+      
+      <div class="movie-badges">
+        <span class="genre-badge" *ngFor="let genero of pelicula.generos">
+          {{ genero.nombre }}
+        </span>
+      </div>
+      
+      <div class="movie-specs">
+        <div class="spec-item">
+          <span class="spec-icon">⏱</span>
+          <span>{{ pelicula.duracion }} min</span>
+        </div>
+      </div>
+      
+      <div class="movie-synopsis-section">
+        <h2 class="section-title">Sinopsis</h2>
+        <p class="synopsis-text">{{ pelicula.sinopsis }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sección de horarios -->
+  <div class="schedule-section" *ngIf="pelicula.funciones && pelicula.funciones.length > 0">
+    <h2 class="section-title">Horarios disponibles</h2>
+    
+    <div class="schedule-grid">
+      <div 
+        *ngFor="let funcion of pelicula.funciones" 
+        class="schedule-card"
+        [class.selected]="funcionSeleccionada?.id === funcion.id"
+        (click)="seleccionarFuncion(funcion)"
+      >
+        <div class="schedule-header">
+          <h3 class="sala-name">{{ funcion.sala.nombre }}</h3>
+          <span class="schedule-date">{{ formatearFecha(funcion.fecha) }}</span>
+        </div>
+        
+        <div class="schedule-time">
+            <span class="time-badge">{{ funcion.horaInicio }}</span>
+        </div>
+
+        <div class="spec-item" *ngIf="funcion.asientosDisponibles > 0">
+            <span class="spec-icon">💰</span>
+            <span class="price-main">S/{{ funcion.precioEntrada }}</span>
+        </div>
+        
+        <div class="schedule-info">
+          <div class="seats-info">
+            <span class="seats-icon">🪑</span>
+            <span>{{ funcion.asientosDisponibles }} disponibles</span>
+          </div>
+          <div class="seats-total">
+            <span class="text-gray-500">de {{ funcion.sala.capacidad || 100 }}</span>
+          </div>
+        </div>
+        
+        <div class="schedule-status">
+          <span 
+            class="status-badge"
+            [class.available]="funcion.asientosDisponibles > 10"
+            [class.limited]="funcion.asientosDisponibles <= 10 && funcion.asientosDisponibles > 0"
+            [class.sold-out]="funcion.asientosDisponibles === 0"
+          >
+            <span *ngIf="funcion.asientosDisponibles > 10">Disponible</span>
+            <span *ngIf="funcion.asientosDisponibles <= 10 && funcion.asientosDisponibles > 0">Pocas entradas</span>
+            <span *ngIf="funcion.asientosDisponibles === 0">Agotado</span>
+        </span>
+        </div>
+        
+    </div>
+    </div>
+  </div>
+
+  <!-- Sección de reserva -->
+
+  <!-- Loading State -->
+  <div *ngIf="cargando" class="container mx-auto px-4 py-12">
+    <div class="flex justify-center items-center">
+      <div class="loading-spinner"></div>
+      <span class="ml-4 text-xl">Cargando</span>
+    </div>
+  </div>
+
+  <div class="reservation-section" *ngIf="funcionSeleccionada">
+    <div class="reservation-card">
+      <h2 class="section-title">Resumen de reserva</h2>
+      
+      <div class="reservation-details">
+        <div class="detail-row">
+          <span class="detail-label">Película:</span>
+          <span class="detail-value">{{ funcionSeleccionada.pelicula.titulo }}</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Sala:</span>
+          <span class="detail-value">{{ funcionSeleccionada.sala.nombre }}</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Fecha:</span>
+          <span class="detail-value">{{ formatearFecha(funcionSeleccionada.fecha) }}</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Hora:</span>
+          <span class="detail-value">{{ funcionSeleccionada.horaInicio }}</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Cantidad:</span>
+          <div class="quantity-controls">
+            <button 
+              class="quantity-btn" 
+              [disabled]="cantidadEntradas <= 1"
+                (click)="disminuirCantidad()"
+            >
+              -
+            </button>
+            <span class="quantity-display">{{ cantidadEntradas }}</span>
+            <button 
+              class="quantity-btn" 
+              [disabled]="cantidadEntradas >= funcionSeleccionada.asientosDisponibles || cantidadEntradas >= 10"
+              (click)="aumentarCantidad()"
+            >
+              +
+            </button>
+          </div>
+        </div>
+        <div class="detail-row total-row">
+          <span class="detail-label">Total:</span>
+          <span class="detail-value total-price">S/{{ total }}</span>
+        </div>
+      </div>
+      
+      <div class="reservation-actions">
+        <button 
+          class="reserve-btn-main"
+          [disabled]="!funcionSeleccionada || cantidadEntradas === 0"
+          (click)="crearReserva()"
+        >
+          Proceder con la reserva
+        </button>
+        <button 
+          class="cancel-btn"
+          (click)="goBack()"
+        >
+          Cancelar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Estado de carga -->
+  <div *ngIf="!pelicula && !error" class="loading-state">
+    <div class="loading-spinner"></div>
+    <p>Cargando información de la película...</p>
+  </div>
+
+  <!-- Estado de error -->
+  <div *ngIf="error" class="error-state">
+    <div class="error-icon">⚠️</div>
+    <h3>Error al cargar la película</h3>
+    <p>{{ error }}</p>
+    <button class="retry-btn">
+      Intentar nuevamente
+    </button>
+  </div>
+</div>

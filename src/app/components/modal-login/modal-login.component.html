@@ -1,0 +1,361 @@
+<!-- Overlay del modal -->
+<div class="modal-overlay">
+  <div class="modal-container">
+    <!-- Header del modal -->
+    <div class="modal-header">
+      <h2 class="modal-title">Bienvenido</h2>
+      <button class="close-btn" (click)="closeDialog()">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs-container">
+      <div class="tabs-header">
+        <button class="tab-btn active" (click)="setActiveTab('login')">
+          <span class="tab-icon">🔐</span>
+          <span>Iniciar Sesión</span>
+        </button>
+        <button class="tab-btn" (click)="setActiveTab('register')">
+          <span class="tab-icon">👤</span>
+          <span>Registrarse</span>
+        </button>
+      </div>
+
+      <div class="tab-indicator"></div>
+    </div>
+
+    <!-- Contenido del modal -->
+    <div class="modal-content">
+      <!-- Panel de Login -->
+      <div class="auth-panel login-panel" [ngClass]="{'active': activeTab === 'login'}">
+        <div class="panel-header">
+          <h3 class="panel-title">Inicia sesión en tu cuenta</h3>
+          <p class="panel-subtitle">Accede a tu cuenta para reservar tus películas favoritas</p>
+        </div>
+
+        <form class="auth-form" (ngSubmit)="login()">
+          <!-- Email -->
+          <div class="form-group">
+            <label class="form-label">
+              <span class="label-text">Correo electrónico</span>
+              <span class="label-required">*</span>
+            </label>
+            <div class="input-container">
+              <div class="input-icon">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"></path>
+                </svg>
+              </div>
+              <input 
+                type="email" 
+                class="form-input"
+                placeholder="tu@email.com"
+                [(ngModel)]="classLogin.nomUsuario"
+                name="nomUsuario"
+                required
+              >
+            </div>
+          </div>
+
+          <!-- Password -->
+          <div class="form-group">
+            <label class="form-label">
+              <span class="label-text">Contraseña</span>
+              <span class="label-required">*</span>
+            </label>
+            <div class="input-container">
+              <div class="input-icon">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                </svg>
+              </div>
+              <input 
+                type="password" 
+                class="form-input"
+                placeholder="Tu contraseña"
+                [(ngModel)]="classLogin.password"
+                name="password"
+                required
+              >
+              <button type="button" class="password-toggle">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Remember me & Forgot password -->
+          <div class="form-options">
+            <label class="checkbox-container">
+              <input type="checkbox" class="checkbox-input">
+              <span class="checkbox-custom"></span>
+              <span class="checkbox-label">Recordarme</span>
+            </label>
+            <a href="#" class="forgot-link">¿Olvidaste tu contraseña?</a>
+          </div>
+
+          <!-- Submit button -->
+          <button type="submit" class="submit-btn">
+            <span class="btn-text">Iniciar Sesión</span>
+            <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </button>
+
+          <!-- Social login -->
+          <div class="social-divider">
+            <span class="divider-line"></span>
+            <span class="divider-text">O continúa con</span>
+            <span class="divider-line"></span>
+          </div>
+
+          <div class="social-buttons">
+            <button type="button" class="social-btn google-btn">
+              <svg class="w-5 h-5" viewBox="0 0 24 24">
+                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+              </svg>
+              Google
+            </button>
+            <button type="button" class="social-btn facebook-btn">
+              <svg class="w-5 h-5" fill="#1877F2" viewBox="0 0 24 24">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+              Facebook
+            </button>
+          </div>
+        </form>
+
+        <!-- Switch to register -->
+        <div class="panel-footer">
+          <p class="footer-text">
+            ¿No tienes cuenta? 
+            <button class="switch-btn">
+              Regístrate aquí
+            </button>
+          </p>
+        </div>
+      </div>
+
+      <!-- Panel de Registro -->
+      <div class="auth-panel register-panel" [ngClass]="{'active': activeTab === 'register'}">
+        <div class="panel-header">
+          <h3 class="panel-title">Crea tu cuenta</h3>
+          <p class="panel-subtitle">Únete a nosotros y disfruta de todas las películas</p>
+        </div>
+
+        <form class="auth-form" (ngSubmit)="registrar()">
+          <!-- Nombre completo -->
+          <div class="form-group">
+            <label class="form-label">
+              <span class="label-text">Nombres</span>
+              <span class="label-required">*</span>
+            </label>
+            <div class="input-container">
+              <div class="input-icon">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                </svg>
+              </div>
+              <input 
+                type="text" 
+                class="form-input"
+                placeholder="Tus nombres"
+                [(ngModel)]="classRegisterCliente.nombre"
+                name="nombre"
+                required
+              >
+            </div>
+            <label class="form-label">
+              <span class="label-text">Apellidos</span>
+              <span class="label-required">*</span>
+            </label>
+            <div class="input-container">
+              <div class="input-icon">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                </svg>
+              </div>
+              <input 
+                type="text" 
+                class="form-input"
+                placeholder="Tus apellidos"
+                [(ngModel)]="classRegisterCliente.apellido"
+                name="apellido"
+                required
+              >
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="form-group">
+            <label class="form-label">
+              <span class="label-text">Correo electrónico</span>
+              <span class="label-required">*</span>
+            </label>
+            <div class="input-container">
+              <div class="input-icon">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"></path>
+                </svg>
+              </div>
+              <input 
+                type="email" 
+                class="form-input"
+                placeholder="tu@email.com"
+                [(ngModel)]="classRegister.email"
+                name="email"
+                required
+              >
+            </div>
+          </div>
+
+          <!-- Password -->
+          <div class="form-group">
+            <label class="form-label">
+              <span class="label-text">Contraseña</span>
+              <span class="label-required">*</span>
+            </label>
+            <div class="input-container">
+              <div class="input-icon">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                </svg>
+              </div>
+              <input 
+                type="password" 
+                class="form-input"
+                placeholder="Mínimo 8 caracteres"
+                [(ngModel)]="classRegister.password"
+                name="password"
+                required
+              >
+              <button type="button" class="password-toggle">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <!-- Documento -->
+            <div class="form-group">
+                <label class="form-label">
+                <span class="label-text">Número de documento</span>
+                <span class="label-required">*</span>
+                </label>
+                <div class="input-container">
+                <div class="input-icon">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                    </svg>
+                </div>
+                <input 
+                    type="text" 
+                    class="form-input"
+                    placeholder="Tu número de documento"
+                    [(ngModel)]="classRegisterCliente.documento"
+                    name="documento"
+                    required
+                >
+                </div>
+            </div>
+          <!-- Genero -->
+            <div class="form-group">
+                <label class="form-label">
+                <span class="label-text">Género</span>
+                <span class="label-required">*</span>
+                </label>
+                <div class="input-container">
+                <div class="input-icon">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                    </svg>
+                </div>
+                <select class="form-input" [(ngModel)]="classRegisterCliente.genero" name="genero" required>
+                    <option value="" disabled selected>Selecciona tu género</option>
+                    <option value=1>Masculino</option>
+                    <option value=2>Femenino</option>
+                    <option value=3>Otro</option>
+                </select>
+                </div>
+            </div>
+            
+            <!-- Fecha de nacimiento -->
+            <div class="form-group">
+                <label class="form-label">
+                <span class="label-text">Fecha de nacimiento</span>
+                <span class="label-required">*</span>
+                </label>
+                <div class="input-container">
+                <div class="input-icon">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                    </svg>
+                </div>
+                <input 
+                    type="date" 
+                    class="form-input"
+                    placeholder="Tu fecha de nacimiento"
+                    [(ngModel)]="classRegisterCliente.fechaNacimiento"
+                    name="fechaNacimiento"
+                    required
+                >
+                </div>
+            </div>
+
+
+          <!-- Terms and conditions -->
+          <div class="form-group">
+            <label class="checkbox-container">
+              <input type="checkbox" class="checkbox-input" required>
+              <span class="checkbox-custom"></span>
+              <span class="checkbox-label">
+                Acepto los 
+                <a href="#" class="terms-link">términos y condiciones</a> 
+                y la 
+                <a href="#" class="terms-link">política de privacidad</a>
+              </span>
+            </label>
+          </div>
+
+          <!-- Marketing opt-in -->
+          <div class="form-group">
+            <label class="checkbox-container">
+              <input type="checkbox" class="checkbox-input">
+              <span class="checkbox-custom"></span>
+              <span class="checkbox-label">
+                Quiero recibir ofertas especiales y noticias por correo
+              </span>
+            </label>
+          </div>
+
+          <!-- Submit button -->
+          <button type="submit" class="submit-btn">
+            <span class="btn-text">Crear Cuenta</span>
+            <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+            </svg>
+          </button>
+        </form>
+
+        <!-- Switch to login -->
+        <div class="panel-footer">
+          <p class="footer-text">
+            ¿Ya tienes cuenta? 
+            <button class="switch-btn">
+              Inicia sesión aquí
+            </button>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

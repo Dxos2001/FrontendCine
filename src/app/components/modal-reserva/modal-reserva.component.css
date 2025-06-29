@@ -1,0 +1,297 @@
+/* Modal Overlay */
+.modal-overlay {
+  @apply fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4;
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Modal Container */
+.modal-container {
+  @apply bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white rounded-2xl shadow-2xl border border-slate-700/50 w-full max-w-2xl max-h-[95vh] overflow-hidden;
+  animation: slideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Modal Header */
+.modal-header {
+  @apply flex justify-between items-center p-6 border-b border-slate-700/50 bg-gradient-to-r from-blue-600/10 to-purple-600/10;
+}
+
+.header-content {
+  @apply flex items-center gap-4;
+}
+
+.header-icon {
+  @apply text-3xl;
+}
+
+.modal-title {
+  @apply text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent;
+}
+
+.close-btn {
+  @apply p-2 hover:bg-slate-700/50 rounded-xl transition-all duration-200 text-slate-400 hover:text-white hover:scale-110;
+}
+
+/* Modal Content */
+.modal-content {
+  @apply relative overflow-y-auto p-6 space-y-6;
+  max-height: calc(95vh - 180px);
+}
+
+/* Content Header */
+.content-header {
+  @apply flex items-center justify-between mb-6 p-4 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-xl border border-blue-500/20;
+}
+
+.ticket-icon {
+  @apply text-2xl;
+}
+
+.content-title {
+  @apply text-xl font-bold text-white;
+}
+
+.reservation-code {
+  @apply flex flex-col items-end;
+}
+
+.code-label {
+  @apply text-xs text-slate-400;
+}
+
+.code-value {
+  @apply text-lg font-mono font-bold text-blue-400;
+}
+
+/* Info Sections */
+.info-section {
+  @apply bg-slate-800/50 rounded-xl p-5 border border-slate-700/30 backdrop-blur-sm;
+}
+
+.section-header {
+  @apply flex items-center gap-3 mb-4;
+}
+
+.section-icon {
+  @apply text-xl p-2 bg-gradient-to-r from-blue-600/30 to-purple-600/30 rounded-lg;
+}
+
+.section-title {
+  @apply text-lg font-semibold text-slate-200;
+}
+
+/* Info Grid */
+.info-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-4;
+}
+
+.info-item {
+  @apply flex flex-col space-y-1 p-3 bg-slate-700/30 rounded-lg border border-slate-600/20;
+}
+
+.info-label {
+  @apply text-xs font-medium text-slate-400 uppercase tracking-wide;
+}
+
+.info-value {
+  @apply text-sm font-semibold text-white;
+}
+
+/* Movie Card */
+.movie-card {
+  @apply bg-gradient-to-r from-slate-700/50 to-slate-600/50 rounded-lg p-4 border border-slate-600/30;
+}
+
+.movie-info {
+  @apply space-y-3;
+}
+
+.movie-title {
+  @apply text-lg font-bold text-white;  
+}
+
+.movie-details {
+  @apply flex items-center gap-4 text-sm text-slate-300;
+}
+
+.movie-duration,
+.movie-hall {
+  @apply flex items-center gap-2;
+}
+
+/* Reservation Details */
+.reservation-details {
+  @apply grid grid-cols-1 md:grid-cols-3 gap-4;
+}
+
+.detail-card {
+  @apply flex items-center gap-3 p-4 bg-slate-700/40 rounded-lg border border-slate-600/20;
+}
+
+.detail-card.price-card {
+  @apply bg-gradient-to-r from-green-600/20 to-emerald-600/20 border-green-500/30;
+}
+
+.detail-icon {
+  @apply text-2xl p-2 bg-slate-600/50 rounded-lg;
+}
+
+.price-card .detail-icon {
+  @apply bg-green-600/30;
+}
+
+.detail-content {
+  @apply flex flex-col;
+}
+
+.detail-label {
+  @apply text-xs font-medium text-slate-400 uppercase tracking-wide;
+}
+
+.detail-value {
+  @apply text-sm font-semibold text-white;
+}
+
+.price-value {
+  @apply text-lg font-bold text-green-400;
+}
+
+/* Modal Footer */
+.modal-footer {
+  @apply flex gap-3 p-6 border-t border-slate-700/50 bg-slate-800/30;
+}
+
+.action-btn {
+  @apply flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-200 transform hover:scale-105;
+}
+
+.primary-btn {
+  @apply bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white shadow-lg hover:shadow-xl flex-1;
+}
+
+.secondary-btn {
+  @apply bg-slate-700 hover:bg-slate-600 text-slate-200 border border-slate-600;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .modal-container {
+    @apply mx-4 max-w-none;
+  }
+  
+  .modal-header {
+    @apply p-4;
+  }
+  
+  .modal-content {
+    @apply p-4 space-y-4;
+  }
+  
+  .content-header {
+    @apply flex-col items-start gap-3 text-center;
+  }
+  
+  .info-grid {
+    @apply grid-cols-1;
+  }
+  
+  .reservation-details {
+    @apply grid-cols-1;
+  }
+  
+  .modal-footer {
+    @apply flex-col p-4;
+  }
+  
+  .header-icon {
+    @apply text-2xl;
+  }
+  
+  .modal-title {
+    @apply text-xl;
+  }
+}
+
+/* Scroll personalizado */
+.modal-content {
+  scrollbar-width: thin;
+  scrollbar-color: #475569 transparent;
+}
+
+.modal-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 3px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* Estados de hover mejorados */
+.info-item:hover {
+  @apply bg-slate-700/50 transform scale-[1.02];
+}
+
+.detail-card:hover {
+  @apply transform scale-[1.02] shadow-lg;
+}
+
+.movie-card:hover {
+  @apply transform scale-[1.01] shadow-lg;
+}
+
+.action-btn:active {
+  @apply transform scale-[0.98];
+}
+
+/* Efectos de entrada secuencial */
+.info-section:nth-child(1) {
+  animation: slideInLeft 0.5s ease-out 0.1s both;
+}
+
+.info-section:nth-child(2) {
+  animation: slideInLeft 0.5s ease-out 0.2s both;
+}
+
+.info-section:nth-child(3) {
+  animation: slideInLeft 0.5s ease-out 0.3s both;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

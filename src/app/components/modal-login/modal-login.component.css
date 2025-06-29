@@ -1,0 +1,359 @@
+/* Overlay del modal */
+.modal-overlay {
+  @apply fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.modal-container {
+  @apply bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white rounded-2xl shadow-2xl border border-gray-700/50 max-w-md w-full max-h-[90vh] overflow-hidden;
+  animation: slideUp 0.3s ease-out;
+}
+
+/* Header del modal */
+.modal-header {
+  @apply flex justify-between items-center p-6 border-b border-gray-700/50;
+}
+
+.modal-title {
+  @apply text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent;
+}
+
+.close-btn {
+  @apply p-2 hover:bg-gray-700/50 rounded-lg transition-colors duration-200 text-gray-400 hover:text-white;
+}
+
+/* Tabs */
+.tabs-container {
+  @apply relative;
+}
+
+.tabs-header {
+  @apply flex;
+}
+
+.tab-btn {
+  @apply flex-1 flex items-center justify-center gap-2 py-4 px-6 text-sm font-medium transition-all duration-300 relative;
+}
+
+.tab-btn:not(.active) {
+  @apply text-gray-400 hover:text-gray-300 hover:bg-gray-800/50;
+}
+
+.tab-btn.active {
+  @apply text-white bg-gradient-to-r from-blue-600/20 to-purple-600/20;
+}
+
+.tab-icon {
+  @apply text-lg;
+}
+
+.tab-indicator {
+  @apply absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-300;
+  width: 50%;
+  transform: translateX(0%);
+}
+
+.tab-btn:last-child.active ~ .tab-indicator {
+  transform: translateX(100%);
+}
+
+/* Contenido del modal */
+.modal-content {
+  @apply relative overflow-y-auto;
+  height: auto;
+  max-height: calc(90vh - 200px);
+}
+
+.auth-panel {
+  @apply p-6 transition-all duration-500 ease-in-out;
+  transform: translateX(0);
+}
+
+.auth-panel:not(.active) {
+  @apply absolute inset-0 opacity-0 pointer-events-none;
+  transform: translateX(100%);
+}
+
+.auth-panel.login-panel:not(.active) {
+  transform: translateX(-100%);
+}
+
+/* Panel header */
+.panel-header {
+  @apply mb-6 text-center;
+}
+
+.panel-title {
+  @apply text-xl font-bold text-white mb-2;
+}
+
+.panel-subtitle {
+  @apply text-gray-400 text-sm;
+}
+
+/* Form styles */
+.auth-form {
+  @apply space-y-4;
+}
+
+.form-group {
+  @apply space-y-2;
+}
+
+.form-label {
+  @apply flex items-center gap-1 text-sm font-medium text-gray-300;
+}
+
+.label-text {
+  @apply text-gray-300;
+}
+
+.label-required {
+  @apply text-red-400;
+}
+
+.label-optional {
+  @apply text-gray-500 text-xs;
+}
+
+.input-container {
+  @apply relative;
+}
+
+.input-icon {
+  @apply absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400;
+}
+
+.form-input {
+  @apply w-full pl-10 pr-12 py-3 bg-gray-800/50 border border-gray-700/50 rounded-lg text-white placeholder-gray-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none transition-all duration-200 backdrop-blur-sm;
+}
+
+.form-input:focus {
+  @apply bg-gray-800/70;
+}
+
+.password-toggle {
+  @apply absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-300 transition-colors duration-200;
+}
+
+/* Password strength */
+.password-strength {
+  @apply flex items-center gap-2 mt-1;
+}
+
+.strength-bar {
+  @apply flex-1 h-1 bg-gray-700 rounded-full overflow-hidden;
+}
+
+.strength-fill {
+  @apply h-full transition-all duration-300;
+  width: 33%;
+}
+
+.strength-fill.weak {
+  @apply bg-red-500;
+}
+
+.strength-fill.medium {
+  @apply bg-yellow-500;
+  width: 66%;
+}
+
+.strength-fill.strong {
+  @apply bg-green-500;
+  width: 100%;
+}
+
+.strength-text {
+  @apply text-xs text-gray-400;
+}
+
+/* Form options */
+.form-options {
+  @apply flex justify-between items-center;
+}
+
+.checkbox-container {
+  @apply flex items-center gap-2 cursor-pointer;
+}
+
+.checkbox-input {
+  @apply sr-only;
+}
+
+.checkbox-custom {
+  @apply w-4 h-4 border-2 border-gray-600 rounded flex items-center justify-center transition-all duration-200;
+}
+
+.checkbox-input:checked + .checkbox-custom {
+  @apply bg-blue-600 border-blue-600;
+}
+
+.checkbox-input:checked + .checkbox-custom::after {
+  content: '✓';
+  @apply text-white text-xs font-bold;
+}
+
+.checkbox-label {
+  @apply text-sm text-gray-300;
+}
+
+.forgot-link {
+  @apply text-sm text-blue-400 hover:text-blue-300 transition-colors duration-200;
+}
+
+.terms-link {
+  @apply text-blue-400 hover:text-blue-300 underline transition-colors duration-200;
+}
+
+/* Submit button */
+.submit-btn {
+  @apply w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg flex items-center justify-center gap-2;
+}
+
+.btn-text {
+  @apply flex-1 text-center;
+}
+
+.btn-icon {
+  @apply w-5 h-5;
+}
+
+/* Social login */
+.social-divider {
+  @apply flex items-center gap-3 my-6;
+}
+
+.divider-line {
+  @apply flex-1 h-px bg-gray-700;
+}
+
+.divider-text {
+  @apply text-xs text-gray-500;
+}
+
+.social-buttons {
+  @apply grid grid-cols-2 gap-3;
+}
+
+.social-btn {
+  @apply flex items-center justify-center gap-2 py-3 px-4 border border-gray-700/50 rounded-lg hover:bg-gray-800/50 transition-all duration-200 text-sm font-medium;
+}
+
+.google-btn {
+  @apply hover:border-blue-500/50;
+}
+
+.facebook-btn {
+  @apply hover:border-blue-600/50;
+}
+
+/* Panel footer */
+.panel-footer {
+  @apply mt-6 pt-4 border-t border-gray-700/50 text-center;
+}
+
+.footer-text {
+  @apply text-sm text-gray-400;
+}
+
+.switch-btn {
+  @apply text-blue-400 hover:text-blue-300 font-medium transition-colors duration-200 underline;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .modal-container {
+    @apply mx-4 max-w-none;
+  }
+  
+  .modal-header {
+    @apply p-4;
+  }
+  
+  .auth-panel {
+    @apply p-4;
+  }
+  
+  .tab-btn {
+    @apply py-3 px-4 text-xs;
+  }
+  
+  .tab-icon {
+    @apply text-base;
+  }
+  
+  .social-buttons {
+    @apply grid-cols-1;
+  }
+}
+
+/* Estados hover y focus mejorados */
+.form-input:hover {
+  @apply border-gray-600;
+}
+
+.tab-btn:hover .tab-icon {
+  @apply transform scale-110;
+}
+
+.submit-btn:active {
+  @apply transform scale-[0.98];
+}
+
+.social-btn:hover svg {
+  @apply transform scale-110;
+}
+
+/* Estados de validación */
+.form-input.valid {
+  @apply border-green-500 focus:ring-green-500/20;
+}
+
+.form-input.invalid {
+  @apply border-red-500 focus:ring-red-500/20;
+}
+
+/* Scroll personalizado para el contenido */
+.modal-content {
+  scrollbar-width: thin;
+  scrollbar-color: #374151 transparent;
+}
+
+.modal-content::-webkit-scrollbar {
+  width: 4px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background: #374151;
+  border-radius: 2px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+  background: #4B5563;
+}

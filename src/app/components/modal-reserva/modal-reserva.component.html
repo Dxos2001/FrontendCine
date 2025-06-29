@@ -1,0 +1,144 @@
+<div class="modal-overlay">
+  <div class="modal-container">
+    <!-- Encabezado del modal -->
+    <div class="modal-header">
+      <div class="header-content">
+        <div class="header-icon">
+          🎬
+        </div>
+        <h2 class="modal-title">Resumen de la Reserva</h2>
+      </div>
+      <button class="close-btn" (click)="matdialogRef.close()">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Contenido del modal -->
+    <div class="modal-content">
+      <!-- Header del contenido -->
+      <div class="content-header">
+        <div class="ticket-icon">🎟️</div>
+        <h3 class="content-title">Detalles de la Reserva</h3>
+        <div class="reservation-code">
+          <span class="code-label">Código:</span>
+          <span class="code-value">{{ dataReserva?.codigoReserva }}</span>
+        </div>
+      </div>
+
+      <!-- Información del cliente -->
+      <div class="info-section">
+        <div class="section-header">
+          <div class="section-icon">👤</div>
+          <h4 class="section-title">Información del Cliente</h4>
+        </div>
+        <div class="info-grid">
+          <div class="info-item">
+            <span class="info-label">Nombre completo</span>
+            <span class="info-value">
+              {{ dataReserva?.cliente?.nombre }} {{ dataReserva?.cliente?.apellido }}
+            </span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Documento</span>
+            <span class="info-value">{{ dataReserva?.cliente?.documento }}</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Fecha de nacimiento</span>
+            <span class="info-value">
+              {{ dataReserva?.cliente?.fechaNacimiento | date: 'dd/MM/yyyy' }}
+            </span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Género</span>
+            <span class="info-value">
+              <ng-container [ngSwitch]="dataReserva?.cliente?.genero">
+                <span *ngSwitchCase="'1'">Masculino</span>
+                <span *ngSwitchCase="'2'">Femenino</span>
+                <span *ngSwitchDefault>Otro</span>
+              </ng-container>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Información de la película -->
+      <div class="info-section">
+        <div class="section-header">
+          <div class="section-icon">🎭</div>
+          <h4 class="section-title">Información de la Función</h4>
+        </div>
+        <div class="movie-card">
+          <div class="movie-info">
+            <div class="movie-title">{{ dataReserva?.funcion?.pelicula?.titulo }}</div>
+            <div class="movie-details">
+              <span class="movie-duration">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path>
+                </svg>
+                {{ dataReserva?.funcion?.pelicula?.duracion }} min
+              </span>
+              <span class="movie-hall">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4z"></path>
+                  <path fill-rule="evenodd" d="M3 8h14v7a2 2 0 01-2 2H5a2 2 0 01-2-2V8zm5 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+                </svg>
+                {{ dataReserva?.funcion?.sala?.nombre }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Información de la reserva -->
+      <div class="info-section">
+        <div class="section-header">
+          <div class="section-icon">📅</div>
+          <h4 class="section-title">Detalles de la Reserva</h4>
+        </div>
+        <div class="reservation-details">
+          <div class="detail-card">
+            <div class="detail-icon">📅</div>
+            <div class="detail-content">
+              <span class="detail-label">Fecha de reserva</span>
+              <span class="detail-value">
+                {{ dataReserva?.fechaReserva | date: 'dd/MM/yyyy HH:mm' }}
+              </span>
+            </div>
+          </div>
+          <div class="detail-card">
+            <div class="detail-icon">🪑</div>
+            <div class="detail-content">
+              <span class="detail-label">Cantidad de asientos</span>
+              <span class="detail-value">{{ dataReserva?.cantidadAsientos }}</span>
+            </div>
+          </div>
+          <div class="detail-card price-card">
+            <div class="detail-icon">💰</div>
+            <div class="detail-content">
+              <span class="detail-label">Precio total</span>
+              <span class="price-value">S/ {{ dataReserva?.precioTotal }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pie del modal -->
+    <div class="modal-footer">
+      <button class="action-btn secondary-btn" (click)="imprimirReserva()">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
+        </svg>
+        Imprimir
+      </button>
+      <button class="action-btn primary-btn" (click)="matdialogRef.close()">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+        </svg>
+        Cerrar
+      </button>
+    </div>
+  </div>
+</div>
