@@ -12,7 +12,7 @@ export class ReservaService {
   constructor(private http: HttpClient) { }
 
   realizarReserva(reservaData: any) {
-    const token = localStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
     return this.http.post(`${this.apiUrl}/reservas`, reservaData, {
       headers: {
         Authorization: `Bearer ${token}`

@@ -59,13 +59,10 @@ export class ModalLoginComponent {
     next: (res: any) => {
           console.log('Login exitoso:', res);
           const { token, user: {idCliente, nomUsuario} } = res;
-          localStorage.setItem('token', token);
-          localStorage.setItem('idCliente', idCliente);
-          localStorage.setItem('nomUsuario', nomUsuario);
+          sessionStorage.setItem('token', token);
+          sessionStorage.setItem('idCliente', idCliente);
+          sessionStorage.setItem('nomUsuario', nomUsuario);
           this.isLoading = false;
-          console.log('Token guardado en localStorage:', localStorage.getItem('token'));
-          console.log('ID Cliente guardado en localStorage:', localStorage.getItem('idCliente'));
-          console.log('Nombre de Usuario guardado en localStorage:', localStorage.getItem('nomUsuario'));
           this.closeDialog();
         },
       error: (error) => {
