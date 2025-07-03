@@ -1,0 +1,45 @@
+[debug] [2025-07-03T07:01:37.819Z] ----------------------------------------------------------------------
+[debug] [2025-07-03T07:01:37.821Z] Command:       /Users/dxos/.nvm/versions/node/v22.14.0/bin/node /Users/dxos/.nvm/versions/node/v22.14.0/bin/firebase serve
+[debug] [2025-07-03T07:01:37.821Z] CLI Version:   14.9.0
+[debug] [2025-07-03T07:01:37.821Z] Platform:      darwin
+[debug] [2025-07-03T07:01:37.821Z] Node Version:  v22.14.0
+[debug] [2025-07-03T07:01:37.821Z] Time:          Thu Jul 03 2025 02:01:37 GMT-0500 (Peru Standard Time)
+[debug] [2025-07-03T07:01:37.821Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-07-03T07:01:37.959Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-07-03T07:01:37.960Z] > authorizing via signed-in user (j.alexander200188@gmail.com)
+[debug] [2025-07-03T07:01:37.960Z] [iam] checking project frontendcine for permissions ["firebase.projects.get"]
+[debug] [2025-07-03T07:01:37.960Z] Checked if tokens are valid: true, expires at: 1751529676895
+[debug] [2025-07-03T07:01:37.960Z] Checked if tokens are valid: true, expires at: 1751529676895
+[debug] [2025-07-03T07:01:37.960Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/frontendcine:testIamPermissions [none]
+[debug] [2025-07-03T07:01:37.960Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/frontendcine:testIamPermissions x-goog-quota-user=projects/frontendcine
+[debug] [2025-07-03T07:01:37.960Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/frontendcine:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2025-07-03T07:01:38.945Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/frontendcine:testIamPermissions 200
+[debug] [2025-07-03T07:01:38.945Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/frontendcine:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2025-07-03T07:01:38.946Z] Checked if tokens are valid: true, expires at: 1751529676895
+[debug] [2025-07-03T07:01:38.946Z] Checked if tokens are valid: true, expires at: 1751529676895
+[debug] [2025-07-03T07:01:38.946Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/frontendcine [none]
+[debug] [2025-07-03T07:01:39.212Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/frontendcine 200
+[debug] [2025-07-03T07:01:39.212Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/frontendcine {"projectNumber":"1098077559828","projectId":"frontendcine","lifecycleState":"ACTIVE","name":"FrontendCine","labels":{"firebase":"enabled","firebase-core":"disabled"},"createTime":"2025-07-03T06:14:05.435980Z"}
+[info] 
+[info] === Serving from '/Users/dxos/Documents/Trabajos/TravelService/Frontend/FrontendCine'...
+[info] 
+[debug] [2025-07-03T07:01:39.215Z] Checked if tokens are valid: true, expires at: 1751529676895
+[debug] [2025-07-03T07:01:39.215Z] Checked if tokens are valid: true, expires at: 1751529676895
+[debug] [2025-07-03T07:01:39.216Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/frontendcine/sites 
+[debug] [2025-07-03T07:01:40.619Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/frontendcine/sites 200
+[debug] [2025-07-03T07:01:40.619Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/frontendcine/sites {"sites":[{"name":"projects/frontendcine/sites/frontendcine","defaultUrl":"https://frontendcine.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2025-07-03T07:01:40.619Z] Checked if tokens are valid: true, expires at: 1751529676895
+[debug] [2025-07-03T07:01:40.619Z] Checked if tokens are valid: true, expires at: 1751529676895
+[debug] [2025-07-03T07:01:40.619Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/frontendcine/webApps/-/config [none]
+[debug] [2025-07-03T07:01:41.171Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/frontendcine/webApps/-/config 200
+[debug] [2025-07-03T07:01:41.171Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/frontendcine/webApps/-/config {"projectId":"frontendcine","storageBucket":"frontendcine.firebasestorage.app","apiKey":"AIzaSyDtiNy6f6P4LvG1vjYuap0DT6OgWW6CtHw","authDomain":"frontendcine.firebaseapp.com","messagingSenderId":"1098077559828"}
+[debug] [2025-07-03T07:01:41.180Z] Checked if tokens are valid: true, expires at: 1751529676895
+[debug] [2025-07-03T07:01:41.180Z] Checked if tokens are valid: true, expires at: 1751529676895
+[debug] [2025-07-03T07:01:41.181Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/frontendcine [none]
+[debug] [2025-07-03T07:01:41.481Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/frontendcine 200
+[debug] [2025-07-03T07:01:41.482Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/frontendcine {"projectId":"frontendcine","projectNumber":"1098077559828","displayName":"FrontendCine","name":"projects/frontendcine","resources":{"hostingSite":"frontendcine"},"state":"ACTIVE","etag":"1_f14e986b-1da0-4292-ad95-2de7c837076d"}
+[info] i  hosting[frontendcine]: Serving hosting files from: dist/frontend-cine/browser/ {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mdist/frontend-cine/browser/\u001b[22m"}}
+[info] ✔  hosting[frontendcine]: Local server: http://localhost:5002 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://localhost:5002\u001b[22m\u001b[24m"}}
+[info] i  hosting: ::1 - - [03/Jul/2025:07:01:43 +0000] "GET / HTTP/1.1" 200 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [03/Jul/2025:07:01:43 +0000] \"GET / HTTP/1.1\" 200 - \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [03/Jul/2025:07:01:43 +0000] "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 187 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [03/Jul/2025:07:01:43 +0000] \"GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1\" 404 187 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36\""}}
