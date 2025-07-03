@@ -92,7 +92,7 @@ export class PeliculaComponent implements OnInit {
 
   crearReserva(){
     this.cargando = true;
-    const idClienteGet = localStorage.getItem('idCliente');
+    const idClienteGet = sessionStorage.getItem('idCliente');
     if (!idClienteGet) {
       alert('Por favor, inicia sesión para realizar una reserva.');
       this.cargando = false;

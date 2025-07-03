@@ -29,7 +29,7 @@ export class CarteleraComponent implements OnInit{
   salaSeleccionada: number = 0;
   filtroTitulo:string = "";
   
-  nomUsuario: string | null = localStorage.getItem('nomUsuario');
+  nomUsuario: string | null = sessionStorage.getItem('nomUsuario');
 
   filtro: any = {
     titulo: null,
