@@ -59,7 +59,7 @@ export class ModalLoginComponent {
     next: (res: any) => {
           console.log('Login exitoso:', res);
           const { token, user: {idCliente, nomUsuario} } = res;
-          localStorage.setItem('token', token);
+          sessionStorage.setItem('token', token);
           sessionStorage.setItem('idCliente', idCliente);
           sessionStorage.setItem('nomUsuario', nomUsuario);
           this.isLoading = false;
