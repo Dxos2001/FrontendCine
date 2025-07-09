@@ -1,4 +1,5 @@
 export const environment = {
   production: false,
-  apiUrl: 'http://34.71.55.81:5208'
+  //apiUrl: 'https://apicinenet.d-xos.com'
+  apiUrl: 'https://backendcinejava.rj.r.appspot.com'
 };
