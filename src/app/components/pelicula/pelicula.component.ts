@@ -115,7 +115,7 @@ export class PeliculaComponent implements OnInit {
           
         },
         error: (error) => {
-            if (error.status === 401) {
+            if (error.status === 401 || error.status == 403) {
             alert('Inicia sesión nuevamente.');
             this.cargando = false;
             this.matDialog.open(ModalLoginComponent, {});
